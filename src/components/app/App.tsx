@@ -49,7 +49,9 @@ function App() {
   const [answers, setAnswers] = useState<string[]>(question.parts.map(part => part.options[0]))
 
   // TODO: include event.preventDefault
-  const handleToggleAnswer = (partIndex: number, option: string) => {
+  function handleToggleAnswer(event: React.MouseEvent, partIndex: number, option: string) {
+    event.preventDefault()
+
     if (isSolved) {
       return
     }
@@ -81,7 +83,7 @@ function App() {
             {part.options.map(option => {
               const style = option === answers[partIndex] ? { fontWeight : "bold" } : {}
 
-              return <div key={option} style={style} onClick={() => handleToggleAnswer(partIndex, option)}>
+              return <div key={option} style={style} onClick={event => handleToggleAnswer(event, partIndex, option)}>
                 {option}
               </div>
             })}
