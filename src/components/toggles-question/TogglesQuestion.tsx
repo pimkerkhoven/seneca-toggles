@@ -15,17 +15,25 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     //  will typescript handle this?
     //  -> https://stackoverflow.com/questions/41045924/how-to-represent-a-variable-key-name-in-typescript-interface
     // TODO: make sure never starts in answered formation
-    const [answers, setAnswers] = useState<string[]>(parts.map(part => part.options[0]))
+    const [answers, setAnswers] = useState<{[partId: string]: string}>(
+        Object.keys(parts).reduce((answers, partId) => ({
+            ...answers,
+            [partId]: parts[partId].options[0]
+        }), {}))
+
+
 
     // TODO: include event.preventDefault
-    function handleToggleAnswer(partIndex: number) {
+    function handleToggleAnswer(partId: string) {
         return function (option: string) {
             if (isSolved) {
                 return
             }
 
-            setAnswers(prevState =>
-                [...prevState.slice(0, partIndex), option, ...prevState.slice(partIndex + 1)])
+            setAnswers(prevState => ({
+                ...prevState,
+                [partId]: option
+            }))
         }
     }
 
@@ -33,9 +41,12 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         // Check for each question if the current answer is the actual answer for the question
         // Combine this result with the result of the previous questions
         // TODO: maybe there is a dedicated array function for this?
-        const areAllAnswersCorrect = answers.reduce((accumulator, currentAnswer, index) => {
-            return accumulator && parts[index].answer === currentAnswer
-        }, true)
+        const areAllAnswersCorrect = Object.keys(answers)
+            .reduce((accumulator, partId) => {
+                const currentAnswer = answers[partId]
+
+                return accumulator && parts[partId].answer === currentAnswer
+            }, true)
 
         if (areAllAnswersCorrect) {
             setIsSolved(true)
@@ -46,12 +57,12 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     return (
         <div className="TogglesQuestion">
             <h1>{title}</h1>
-            {parts.map((part, partIndex) =>
+            {Object.keys(parts).map(partId =>
                 <Toggle
-                    key={partIndex}
-                    part={part}
-                    onToggle={handleToggleAnswer(partIndex)}
-                    currentAnswer={answers[partIndex]} />
+                    key={partId}
+                    part={parts[partId]}
+                    onToggle={handleToggleAnswer(partId)}
+                    currentAnswer={answers[partId]} />
             )}
             <h1>{isSolved ? "The answer is correct!" : "The answer is incorrect"}</h1>
         </div>

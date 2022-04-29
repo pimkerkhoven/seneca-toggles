@@ -8,5 +8,7 @@ export interface QuestionPart {
 
 export interface Question {
     title: String
-    parts: QuestionPart[]
+    parts: {
+        [partId: string]: QuestionPart
+    }
 }

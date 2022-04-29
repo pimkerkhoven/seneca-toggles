@@ -10,20 +10,20 @@ function App() {
     // TODO: Assume options are all unique within part
     // TODO: State assumption of question format.
     title: "An animal cell contains",
-    parts: [
-      {
+    parts: {
+      1: {
         options: ["Cell wall", "Ribosomes"],
         answer: "Cell wall"
       },
-      {
+      2: {
         options: ["Cytoplasm", "Chloroplast"],
         answer: "Cytoplasm"
       },
-      {
+      3: {
         options: ["Partial membrane", "Impermeable membrane"],
         answer: "Impermeable membrane"
       }
-    ]
+    }
   }
 
   // TODO: change cursor to pointer when hovering (un)selected options
