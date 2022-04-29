@@ -1,9 +1,54 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+/**
+ * - test snapshot of initial render
+ * - test clicking answer toggles option
+ * - test putting correct answer updates status text
+ * - test putting correct answer locks toggles
+ */
+
+test('renders the component', () => {
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
 });
+
+test('toggling an option marks it as selected', () => {
+  const {asFragment} = render(<App />);
+
+  const toggle = screen.getByText("Ribosomes")
+  fireEvent.click(toggle)
+
+  expect(asFragment()).toMatchSnapshot()
+  expect(toggle.style.fontWeight).toBe("bold")
+  expect(screen.getByText("Cell wall").style.fontWeight).toBe("")
+});
+
+test('marking last incorrect answer correct updates status text', () => {
+  const { asFragment } = render(<App />);
+
+  const statusText = screen.getByText("The answer is incorrect")
+
+  const toggle = screen.getByText("Impermeable membrane")
+  fireEvent.click(toggle)
+
+  expect(asFragment()).toMatchSnapshot()
+  expect(statusText.innerHTML).toBe("The answer is correct!")
+});
+
+test('marking last incorrect answer correct locks toggles', () => {
+  const { asFragment } = render(<App />);
+
+  const toggle = screen.getByText("Impermeable membrane")
+  fireEvent.click(toggle)
+
+  const lockedToggle = screen.getByText("Ribosomes")
+  fireEvent.click(lockedToggle)
+
+  expect(asFragment()).toMatchSnapshot()
+  expect(lockedToggle.style.fontWeight).toBe("")
+});
+
+

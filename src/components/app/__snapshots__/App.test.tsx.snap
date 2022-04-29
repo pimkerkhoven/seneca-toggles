@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`marking last incorrect answer correct locks toggles 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <h1>
+      An animal cell contains
+    </h1>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Cell wall
+      </div>
+      <div>
+        Ribosomes
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Cytoplasm
+      </div>
+      <div>
+        Chloroplast
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style=""
+      >
+        Partial membrane
+      </div>
+      <div
+        style="font-weight: bold;"
+      >
+        Impermeable membrane
+      </div>
+    </div>
+    <h1>
+      The answer is correct!
+    </h1>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`marking last incorrect answer correct updates status text 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <h1>
+      An animal cell contains
+    </h1>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Cell wall
+      </div>
+      <div>
+        Ribosomes
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Cytoplasm
+      </div>
+      <div>
+        Chloroplast
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style=""
+      >
+        Partial membrane
+      </div>
+      <div
+        style="font-weight: bold;"
+      >
+        Impermeable membrane
+      </div>
+    </div>
+    <h1>
+      The answer is correct!
+    </h1>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders the component 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <h1>
+      An animal cell contains
+    </h1>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Cell wall
+      </div>
+      <div>
+        Ribosomes
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Cytoplasm
+      </div>
+      <div>
+        Chloroplast
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Partial membrane
+      </div>
+      <div>
+        Impermeable membrane
+      </div>
+    </div>
+    <h1>
+      The answer is incorrect
+    </h1>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`toggling an option marks it as selected 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <h1>
+      An animal cell contains
+    </h1>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style=""
+      >
+        Cell wall
+      </div>
+      <div
+        style="font-weight: bold;"
+      >
+        Ribosomes
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Cytoplasm
+      </div>
+      <div>
+        Chloroplast
+      </div>
+    </div>
+    <div
+      style="margin: 10px; border: 1px solid black;"
+    >
+      <div
+        style="font-weight: bold;"
+      >
+        Partial membrane
+      </div>
+      <div>
+        Impermeable membrane
+      </div>
+    </div>
+    <h1>
+      The answer is incorrect
+    </h1>
+  </div>
+</DocumentFragment>
+`;
