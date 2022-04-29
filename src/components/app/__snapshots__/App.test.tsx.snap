@@ -3,7 +3,7 @@
 exports[`marking last incorrect answer correct locks toggles 1`] = `
 <DocumentFragment>
   <div
-    class="App"
+    class="TogglesQuestion"
   >
     <h1>
       An animal cell contains
@@ -56,7 +56,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
 exports[`marking last incorrect answer correct updates status text 1`] = `
 <DocumentFragment>
   <div
-    class="App"
+    class="TogglesQuestion"
   >
     <h1>
       An animal cell contains
@@ -109,7 +109,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
 exports[`renders the component 1`] = `
 <DocumentFragment>
   <div
-    class="App"
+    class="TogglesQuestion"
   >
     <h1>
       An animal cell contains
@@ -160,7 +160,7 @@ exports[`renders the component 1`] = `
 exports[`toggling an option marks it as selected 1`] = `
 <DocumentFragment>
   <div
-    class="App"
+    class="TogglesQuestion"
   >
     <h1>
       An animal cell contains
