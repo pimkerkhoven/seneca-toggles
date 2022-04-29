@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Question } from "../../types/Question";
 import Toggle from "../toggle/Toggle";
+import "./TogglesQuestion.css"
 
 interface TogglesQuestionProps {
     question: Question
@@ -11,9 +12,6 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     // TODO: consistent naming of boolean variables is.../are.../has...
     const [isSolved, setIsSolved] = useState<boolean>(false)
 
-    // TODO: maybe this works a bit nicer if answers is an object?  with a key for each part? How
-    //  will typescript handle this?
-    //  -> https://stackoverflow.com/questions/41045924/how-to-represent-a-variable-key-name-in-typescript-interface
     // TODO: make sure never starts in answered formation
     const [answers, setAnswers] = useState<string[]>(parts.map(part => part.options[0]))
 
@@ -53,7 +51,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
                     onToggle={handleToggleAnswer(partIndex)}
                     currentAnswer={answers[partIndex]} />
             )}
-            <h1>{isSolved ? "The answer is correct!" : "The answer is incorrect"}</h1>
+            <h2>{isSolved ? "The answer is correct!" : "The answer is incorrect"}</h2>
         </div>
     )
 }

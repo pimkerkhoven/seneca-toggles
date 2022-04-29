@@ -1,0 +1,45 @@
+/* TODO: make logical grouping of css properties */
+.Toggle {
+    border: 2px solid #F9D29F;
+    box-sizing: border-box;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-around;
+    /*align-items: center;*/
+    margin: 0 50px;
+
+    overflow: hidden;
+}
+
+.Toggle.stacked {
+    border-radius: 24px;
+    flex-direction: column;
+}
+
+.Toggle.stacked .ToggleOption {
+    border-radius: 0;
+}
+
+.ToggleOption {
+    box-sizing: border-box;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 160%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    flex: 1
+}
+
+/* TODO: CSS variables for color and the likes?*/
+.ToggleOption.selected {
+    background-color: #F8CAA3;
+    color: #9F938B;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import {QuestionPart} from "../../types/Question";
+import './Toggle.css'
 
 interface ToggleOptionProps {
     optionText: string,
@@ -14,10 +15,10 @@ const ToggleOption: React.FC<ToggleOptionProps> = ({optionText, selected, toggle
         toggle(optionText)
     }
 
-    const style = selected ? { fontWeight : "bold" } : {}
+    const classNames = selected ? "ToggleOption selected" : "ToggleOption"
 
     return (
-        <div style={style} onClick={handleOnClick}>
+        <div className={classNames} onClick={handleOnClick}>
             {optionText}
         </div>
     )
@@ -34,7 +35,7 @@ interface ToggleProps {
 const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle}) => {
     // TODO: block click on toggle option if option equals current answer
     return (
-        <div style={{margin: 10, border: '1px solid black'}}>
+        <div className="Toggle">
             {options.map(option => {
                 return <ToggleOption
                     key={option}

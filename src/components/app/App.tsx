@@ -9,7 +9,7 @@ function App() {
     //  Same for options
     // TODO: Assume options are all unique within part
     // TODO: State assumption of question format.
-    title: "An animal cell contains",
+    title: "An animal cell contains:",
     parts: [
       {
         options: ["Cell wall", "Ribosomes"],
