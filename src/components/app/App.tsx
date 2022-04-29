@@ -1,5 +1,5 @@
 import React from 'react';
-import Question from "../../types/Question";
+import { Question } from "../../types/Question";
 import TogglesQuestion from "../toggles-question/TogglesQuestion";
 
 // TODO: add component level (multi-line) comment indicating purpose/intent

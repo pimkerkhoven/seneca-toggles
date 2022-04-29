@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Question from "../../types/Question";
+import { Question } from "../../types/Question";
+import Toggle from "../toggle/Toggle";
 
 interface TogglesQuestionProps {
     question: Question
@@ -17,15 +18,15 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     const [answers, setAnswers] = useState<string[]>(parts.map(part => part.options[0]))
 
     // TODO: include event.preventDefault
-    function handleToggleAnswer(event: React.MouseEvent, partIndex: number, option: string) {
-        event.preventDefault()
+    function handleToggleAnswer(partIndex: number) {
+        return function (option: string) {
+            if (isSolved) {
+                return
+            }
 
-        if (isSolved) {
-            return
+            setAnswers(prevState =>
+                [...prevState.slice(0, partIndex), option, ...prevState.slice(partIndex + 1)])
         }
-
-        setAnswers(prevState =>
-            [...prevState.slice(0, partIndex), option, ...prevState.slice(partIndex + 1)])
     }
 
     useEffect(() => {
@@ -45,17 +46,13 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     return (
         <div className="TogglesQuestion">
             <h1>{title}</h1>
-            {parts.map((part, partIndex) => (
-                <div key={partIndex} style={{margin: 10, border: '1px solid black'}}>
-                    {part.options.map(option => {
-                        const style = option === answers[partIndex] ? { fontWeight : "bold" } : {}
-
-                        return <div key={option} style={style} onClick={event => handleToggleAnswer(event, partIndex, option)}>
-                            {option}
-                        </div>
-                    })}
-                </div>
-            ))}
+            {parts.map((part, partIndex) =>
+                <Toggle
+                    key={partIndex}
+                    part={part}
+                    onToggle={handleToggleAnswer(partIndex)}
+                    currentAnswer={answers[partIndex]} />
+            )}
             <h1>{isSolved ? "The answer is correct!" : "The answer is incorrect"}</h1>
         </div>
     )
