@@ -22,8 +22,8 @@ test('toggling an option marks it as selected', () => {
   fireEvent.click(toggle)
 
   expect(asFragment()).toMatchSnapshot()
-  expect(toggle.style.fontWeight).toBe("bold")
-  expect(screen.getByText("Cell wall").style.fontWeight).toBe("")
+  expect(toggle.className).toBe( "ToggleOption selected")
+  expect(screen.getByText("Cell wall").className).toBe("ToggleOption")
 });
 
 test('marking last incorrect answer correct updates status text', () => {
@@ -48,7 +48,7 @@ test('marking last incorrect answer correct locks toggles', () => {
   fireEvent.click(lockedToggle)
 
   expect(asFragment()).toMatchSnapshot()
-  expect(lockedToggle.style.fontWeight).toBe("")
+  expect(lockedToggle.className).toBe("ToggleOption")
 });
 
 

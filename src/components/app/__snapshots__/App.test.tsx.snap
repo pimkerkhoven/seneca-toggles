@@ -6,49 +6,53 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
     class="TogglesQuestion"
   >
     <h1>
-      An animal cell contains
+      An animal cell contains:
     </h1>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Cell wall
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Ribosomes
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Cytoplasm
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Chloroplast
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style=""
+        class="ToggleOption"
       >
         Partial membrane
       </div>
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Impermeable membrane
       </div>
     </div>
-    <h1>
+    <h2>
       The answer is correct!
-    </h1>
+    </h2>
   </div>
 </DocumentFragment>
 `;
@@ -59,49 +63,53 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
     class="TogglesQuestion"
   >
     <h1>
-      An animal cell contains
+      An animal cell contains:
     </h1>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Cell wall
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Ribosomes
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Cytoplasm
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Chloroplast
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style=""
+        class="ToggleOption"
       >
         Partial membrane
       </div>
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Impermeable membrane
       </div>
     </div>
-    <h1>
+    <h2>
       The answer is correct!
-    </h1>
+    </h2>
   </div>
 </DocumentFragment>
 `;
@@ -112,47 +120,53 @@ exports[`renders the component 1`] = `
     class="TogglesQuestion"
   >
     <h1>
-      An animal cell contains
+      An animal cell contains:
     </h1>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Cell wall
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Ribosomes
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Cytoplasm
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Chloroplast
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Partial membrane
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Impermeable membrane
       </div>
     </div>
-    <h1>
+    <h2>
       The answer is incorrect
-    </h1>
+    </h2>
   </div>
 </DocumentFragment>
 `;
@@ -163,49 +177,53 @@ exports[`toggling an option marks it as selected 1`] = `
     class="TogglesQuestion"
   >
     <h1>
-      An animal cell contains
+      An animal cell contains:
     </h1>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style=""
+        class="ToggleOption"
       >
         Cell wall
       </div>
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Ribosomes
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Cytoplasm
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Chloroplast
       </div>
     </div>
     <div
-      style="margin: 10px; border: 1px solid black;"
+      class="Toggle"
     >
       <div
-        style="font-weight: bold;"
+        class="ToggleOption selected"
       >
         Partial membrane
       </div>
-      <div>
+      <div
+        class="ToggleOption"
+      >
         Impermeable membrane
       </div>
     </div>
-    <h1>
+    <h2>
       The answer is incorrect
-    </h1>
+    </h2>
   </div>
 </DocumentFragment>
 `;
