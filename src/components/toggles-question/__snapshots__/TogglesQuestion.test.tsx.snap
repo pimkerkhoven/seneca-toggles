@@ -3,7 +3,7 @@
 exports[`marking last incorrect answer correct locks toggles 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion"
+    class="TogglesQuestion correct"
   >
     <h1>
       An animal cell contains:
@@ -11,6 +11,10 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+      />
       <div
         class="ToggleOption selected"
       >
@@ -26,6 +30,10 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
       class="Toggle"
     >
       <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+      />
+      <div
         class="ToggleOption selected"
       >
         Cytoplasm
@@ -39,6 +47,10 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+      />
       <div
         class="ToggleOption"
       >
@@ -60,7 +72,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
 exports[`marking last incorrect answer correct updates status text 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion"
+    class="TogglesQuestion correct"
   >
     <h1>
       An animal cell contains:
@@ -68,6 +80,10 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+      />
       <div
         class="ToggleOption selected"
       >
@@ -83,6 +99,10 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
       class="Toggle"
     >
       <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+      />
+      <div
         class="ToggleOption selected"
       >
         Cytoplasm
@@ -96,6 +116,10 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+      />
       <div
         class="ToggleOption"
       >
@@ -117,7 +141,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
 exports[`renders the component 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion"
+    class="TogglesQuestion incorrect"
   >
     <h1>
       An animal cell contains:
@@ -125,6 +149,10 @@ exports[`renders the component 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+      />
       <div
         class="ToggleOption selected"
       >
@@ -140,12 +168,16 @@ exports[`renders the component 1`] = `
       class="Toggle"
     >
       <div
-        class="ToggleOption selected"
+        class="slider"
+        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+      />
+      <div
+        class="ToggleOption"
       >
         Cytoplasm
       </div>
       <div
-        class="ToggleOption"
+        class="ToggleOption selected"
       >
         Chloroplast
       </div>
@@ -153,6 +185,10 @@ exports[`renders the component 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+      />
       <div
         class="ToggleOption selected"
       >
@@ -174,7 +210,7 @@ exports[`renders the component 1`] = `
 exports[`toggling an option marks it as selected 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion"
+    class="TogglesQuestion incorrect"
   >
     <h1>
       An animal cell contains:
@@ -182,6 +218,10 @@ exports[`toggling an option marks it as selected 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+      />
       <div
         class="ToggleOption"
       >
@@ -197,12 +237,16 @@ exports[`toggling an option marks it as selected 1`] = `
       class="Toggle"
     >
       <div
-        class="ToggleOption selected"
+        class="slider"
+        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+      />
+      <div
+        class="ToggleOption"
       >
         Cytoplasm
       </div>
       <div
-        class="ToggleOption"
+        class="ToggleOption selected"
       >
         Chloroplast
       </div>
@@ -210,6 +254,10 @@ exports[`toggling an option marks it as selected 1`] = `
     <div
       class="Toggle"
     >
+      <div
+        class="slider"
+        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+      />
       <div
         class="ToggleOption selected"
       >

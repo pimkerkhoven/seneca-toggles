@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react';
 import { Question } from "../../types/Question";
 import Toggle from "../toggle/Toggle";
 import "./TogglesQuestion.css"
-import {shuffleArray} from "../../util/shuffle";
+import {randomNumber, shuffleArray} from "../../util";
 
 interface TogglesQuestionProps {
     question: Question
 }
 
 // TODO: this has assumptions
-function calculateGradient(percentageCorrect: number) {
+// TODO: refactor and moe to appropriate position
+function getCorrectnessClass(percentageCorrect: number) {
     if (percentageCorrect === 1) {
         return "correct"
     }
@@ -19,11 +20,6 @@ function calculateGradient(percentageCorrect: number) {
     }
 
     return "incorrect"
-}
-
-// TODO: move to util
-function randomNumber(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min) + min);
 }
 
 const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, parts}}) => {
@@ -53,6 +49,9 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
             shuffleArray(parts[i].options)
         }
 
+        // Make sure less than 50% of all answers is initialised as the correct answer
+        // We do not initialise all questions as incorrect as this would make the correct
+        // answer too obvious.
         let initialisedAsCorrectAnswer = 0
         const maxInitialisedCorrectly = Math.floor(0.5 * parts.length)
 
@@ -77,7 +76,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
 
     useEffect(() => {
         // Check for each question if the current answer is the actual answer for the question
-        // Combine this result with the result of the previous questions
+        // Keep a count of how many are answered correct.
         // TODO: maybe there is a dedicated array function for this?
         const currentNumberOfCorrectAnswers = answers.reduce((accumulator, currentAnswer, index) => {
             if (parts[index].answer === currentAnswer) {
@@ -90,9 +89,9 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         setNumberOfCorrectAnswers(currentNumberOfCorrectAnswers)
     }, [answers, parts])
 
-    const isSolved = numberOfCorrectAnswers === parts.length
 
-    const correctnessClass = calculateGradient(numberOfCorrectAnswers / parts.length)
+    const isSolved = numberOfCorrectAnswers === parts.length
+    const correctnessClass = getCorrectnessClass(numberOfCorrectAnswers / parts.length)
 
     return (
         <div className={"TogglesQuestion " + correctnessClass} >

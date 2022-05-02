@@ -41,9 +41,6 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 160%;
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
     text-align: center;
     padding: 20px 0;
 
@@ -61,7 +58,6 @@
 
 /* TODO: CSS variables for color and the likes?*/
 .ToggleOption.selected {
-    /*background-color: #F8CAA3;*/
     color: #9F938B;
 }
 
