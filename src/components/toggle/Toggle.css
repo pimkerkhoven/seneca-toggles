@@ -1,6 +1,5 @@
 /* TODO: make logical grouping of css properties */
 .Toggle {
-    border: 2px solid #F9D29F;
     box-sizing: border-box;
     border-radius: 100px;
     display: flex;
@@ -9,6 +8,18 @@
     margin: 0 20px;
 
     overflow: hidden;
+}
+
+.correct .Toggle {
+    border: 2px solid #FBFBFB;
+}
+
+.partially-correct .Toggle {
+    border: 2px solid #F9D29F;
+}
+
+.incorrect .Toggle {
+    border: 2px solid #FBFBFB;
 }
 
 .Toggle.stacked {
@@ -48,6 +59,18 @@
 
 /* TODO: CSS variables for color and the likes?*/
 .ToggleOption.selected {
-    background-color: #F8CAA3;
+    /*background-color: #F8CAA3;*/
     color: #9F938B;
+}
+
+.correct .ToggleOption.selected{
+    background-color: #A5E7E2;
+}
+
+.partially-correct .ToggleOption.selected{
+    background-color: #F8CAA3;
+}
+
+.incorrect .ToggleOption.selected{
+    background-color: #F2CBBD;
 }

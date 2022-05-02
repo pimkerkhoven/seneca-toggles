@@ -7,10 +7,22 @@ interface TogglesQuestionProps {
     question: Question
 }
 
+function calculateGradient(percentageCorrect: number) {
+    if (percentageCorrect === 1) {
+        return "correct"
+    }
+
+    if (percentageCorrect > 0.5) {
+        return "partially-correct"
+    }
+
+    return "incorrect"
+}
+
 const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, parts}}) => {
     // Indicates whether the question is answered correctly (i.e. if all parts are answered correctly)
     // TODO: consistent naming of boolean variables is.../are.../has...
-    const [isSolved, setIsSolved] = useState<boolean>(false)
+    const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState<number>(0)
 
     // TODO: make sure never starts in answered formation
     const [answers, setAnswers] = useState<string[]>(parts.map(part => part.options[0]))
@@ -18,7 +30,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     // TODO: include event.preventDefault
     function handleToggleAnswer(partIndex: number) {
         return function (option: string) {
-            if (isSolved) {
+            if (numberOfCorrectAnswers === parts.length) {
                 return
             }
 
@@ -31,18 +43,23 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         // Check for each question if the current answer is the actual answer for the question
         // Combine this result with the result of the previous questions
         // TODO: maybe there is a dedicated array function for this?
-        const areAllAnswersCorrect = answers.reduce((accumulator, currentAnswer, index) => {
-            return accumulator && parts[index].answer === currentAnswer
-        }, true)
+        const currentNumberOfCorrectAnswers = answers.reduce((accumulator, currentAnswer, index) => {
+            if (parts[index].answer === currentAnswer) {
+                return accumulator + 1
+            }
 
-        if (areAllAnswersCorrect) {
-            setIsSolved(true)
-        }
+            return accumulator
+        }, 0)
+
+        setNumberOfCorrectAnswers(currentNumberOfCorrectAnswers)
     }, [answers, parts])
 
+    const isSolved = numberOfCorrectAnswers === parts.length
+
+    const correctnessClass = calculateGradient(numberOfCorrectAnswers / parts.length)
 
     return (
-        <div className="TogglesQuestion">
+        <div className={"TogglesQuestion " + correctnessClass} >
             <h1>{title}</h1>
             {parts.map((part, partIndex) =>
                 <Toggle

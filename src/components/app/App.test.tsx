@@ -10,6 +10,8 @@ import App from './App';
  * - test putting correct answer locks toggles
  */
 
+// TODO: move tests to correct file!
+
 test('renders the component', () => {
   const { asFragment } = render(<App />);
   expect(asFragment()).toMatchSnapshot();

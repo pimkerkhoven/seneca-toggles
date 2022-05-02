@@ -5,13 +5,25 @@
 }
 
 .TogglesQuestion {
-    background: linear-gradient(180deg, #F6B868 0%, #EE6B2D 100%);;
+    /*background: linear-gradient(180deg, #F6B868 0%, #EE6B2D 100%);*/
     display: flex;
     flex-direction: column;
     max-width: 900px;
     margin: 0 auto;
     /*justify-content: center;*/
     /*align-items: center;*/
+}
+
+.TogglesQuestion.correct {
+    background: linear-gradient(180deg, #76E0C2 0%, #59CADA 100%);
+}
+
+.TogglesQuestion.partially-correct {
+    background: linear-gradient(180deg, #F6B868 0%, #EE6B2D 100%);
+}
+
+.TogglesQuestion.incorrect {
+    background: linear-gradient(180deg, #F1B496 0%, #EA806A 100%)
 }
 
 .TogglesQuestion h1, .TogglesQuestion h2 {
