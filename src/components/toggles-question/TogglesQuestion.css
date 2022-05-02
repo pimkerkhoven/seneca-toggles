@@ -44,6 +44,20 @@
     font-size: 32px;
 }
 
+@media screen and (max-width: 600px) {
+    .TogglesQuestion h1, .TogglesQuestion h2 {
+        line-height: 160%;
+    }
+
+    .TogglesQuestion h1 {
+        font-size: 20px;
+    }
+
+    .TogglesQuestion h2 {
+        font-size: 16px;
+    }
+}
+
 .TogglesQuestion > * {
     margin-bottom: 24px;
 }
