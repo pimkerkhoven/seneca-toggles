@@ -31,7 +31,6 @@ const Toggle: React.FC<ToggleProps> = ({questionPart: {options}, currentAnswer, 
                     const textSpan = child.children.item(0) as HTMLSpanElement
 
                     if (textSpan) {
-                        // TODO: extract 10 to variable as PADDING
                         const spanSize = textSpan.getBoundingClientRect().width
                         if (spanSize > maxSize) {
                             return spanSize

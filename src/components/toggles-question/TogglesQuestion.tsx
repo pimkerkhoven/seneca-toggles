@@ -45,7 +45,6 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         let initialisedAsCorrectAnswer = 0
         const maxInitialisedCorrectly = Math.floor(0.5 * parts.length)
 
-        // TODO: assumption at least two options
         const initialAnswers: string[] = parts.map(part => {
             let index = randomNumber(0, part.options.length)
             const answer = part.options[index]
@@ -109,8 +108,6 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
 
 export default TogglesQuestion
 
-// TODO: this has assumptions about when to show which correctness level
-// TODO: refactor and move to appropriate position
 function getCorrectnessClass(percentageCorrect: number) {
     if (percentageCorrect === 1) {
         return "correct"
