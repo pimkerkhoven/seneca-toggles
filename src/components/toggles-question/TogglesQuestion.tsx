@@ -88,10 +88,10 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         // Check for each question if the current answer is the actual answer for the question
         // Keep a count of how many are answered correct.
         const currentNumberOfCorrectAnswers =
-            answers.reduce((accumulator, currentAnswer, index) =>
+            answers.reduce((totalCorrect, currentAnswer, index) =>
                     parts[index].answer === currentAnswer
-                        ? accumulator + 1
-                        : accumulator
+                        ? totalCorrect + 1
+                        : totalCorrect
                 , 0)
 
         setNumberOfCorrectAnswers(currentNumberOfCorrectAnswers)
@@ -105,12 +105,12 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         : "The answer is incorrect"
 
     return (
-        <div className={"TogglesQuestion " + correctnessClass} >
+        <div className={`TogglesQuestion ${correctnessClass}`}>
             <h1>{title}</h1>
             {parts.map((part, partIndex) =>
                 <Toggle
                     key={partIndex}
-                    part={part}
+                    questionPart={part}
                     onToggle={handleToggleAnswer(partIndex)}
                     currentAnswer={answers[partIndex]} />
             )}

@@ -6,20 +6,18 @@ import './Toggle.css'
 interface ToggleOptionProps {
     optionText: string,
     selected: boolean,
-    toggle: (option: string) => void
+    onToggle: (option: string) => void
 }
 
-const ToggleOption: React.FC<ToggleOptionProps> = ({optionText, selected, toggle}) => {
-    function handleOnClick(event: React.MouseEvent) {
+const ToggleOption: React.FC<ToggleOptionProps> = ({optionText, selected, onToggle}) => {
+    function handleToggle(event: React.MouseEvent) {
         event.preventDefault()
 
-        toggle(optionText)
+        onToggle(optionText)
     }
 
-    const classNames = selected ? "ToggleOption selected" : "ToggleOption"
-
     return (
-        <div className={classNames} onClick={handleOnClick}>
+        <div className={`ToggleOption${selected ? " selected" : ""}`} onClick={handleToggle}>
             <span>{optionText}</span>
         </div>
     )
@@ -27,13 +25,13 @@ const ToggleOption: React.FC<ToggleOptionProps> = ({optionText, selected, toggle
 
 
 interface ToggleProps {
-    part: QuestionPart,
+    questionPart: QuestionPart,
     currentAnswer: string,
     onToggle: (option: string) => void
 }
 
 // TODO: passing down the toggle option is not really nice
-const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle}) => {
+const Toggle: React.FC<ToggleProps> = ({questionPart: {options}, currentAnswer, onToggle}) => {
     // TODO: block click on toggle option if option equals current answer
 
     const [isStacked, setIsStacked] = useState<boolean>(false)
@@ -49,26 +47,22 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
                 return
             }
 
-            const children = Array.from(toggleRef.current.children)
+            const maxSpanWidth = Array.from(toggleRef.current.children)
+                .reduce((maxSize, child) => {
+                    const textSpan = child.children.item(0) as HTMLSpanElement
 
-            const textWidthsOfChildren = children.map(child => {
-                const textSpan = child.children.item(0) as HTMLSpanElement
+                    if (textSpan) {
+                        // TODO: extract 10 to variable as PADDING
+                        const spanSize = textSpan.getBoundingClientRect().width
+                        if (spanSize > maxSize) {
+                            return spanSize
+                        }
+                    }
 
-                if (textSpan) {
-                    // TODO: extract 10 to variable as PADDING
-                    return textSpan.getBoundingClientRect().width + 10
-                }
+                    return maxSize
+                }, 0)
 
-                return 0
-            })
-
-            const maxSpanWidth = Math.max(...textWidthsOfChildren)
-
-            if (maxSpanWidth * options.length < toggleRef.current.clientWidth) {
-                setIsStacked(false)
-            } else {
-                setIsStacked(true)
-            }
+            setIsStacked(maxSpanWidth * options.length > toggleRef.current.clientWidth)
         }
 
         handleResize()
@@ -77,20 +71,18 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
         return () => window.removeEventListener('resize', handleResize)
     }, [toggleRef, options.length])
 
-    const classNames = isStacked ? "Toggle stacked" : "Toggle"
-
     const currentAnswerIndex = options.findIndex(option => option === currentAnswer)
     const sliderPosition = getSliderPosition(options.length, currentAnswerIndex, isStacked)
 
     return (
-        <div className={classNames} ref={toggleRef}>
+        <div className={`Toggle${isStacked ? " stacked" : ""}`} ref={toggleRef}>
             <div className="slider" style={sliderPosition} />
             {options.map(option => {
                 return <ToggleOption
                     key={option}
                     optionText={option}
                     selected={option === currentAnswer}
-                    toggle={onToggle} />
+                    onToggle={onToggle} />
             })}
         </div>
     )

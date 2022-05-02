@@ -1,9 +1,10 @@
+/* eslint-disable testing-library/no-node-access */
+
 import React from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
 import * as util from "../../util";
 import TogglesQuestion from "./TogglesQuestion";
 import {Question} from "../../types/Question";
-
 
 
 /**
@@ -53,21 +54,20 @@ test('renders the component', () => {
 
   expect(asFragment()).toMatchSnapshot();
 
-  expect(screen.getByText("Cell wall").className).toBe("ToggleOption selected")
-  expect(screen.getByText("Chloroplast").className).toBe("ToggleOption selected")
-  expect(screen.getByText("Partial membrane").className).toBe("ToggleOption selected")
-
+  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("ToggleOption selected")
+  expect((screen.getByText("Chloroplast").parentElement as Element).className).toBe("ToggleOption selected")
+  expect((screen.getByText("Partial membrane").parentElement as Element).className).toBe("ToggleOption selected")
 });
 
 test('toggling an option marks it as selected', () => {
   const {asFragment} = render(<TogglesQuestion question={question} />);
 
-  const toggle = screen.getByText("Ribosomes")
+  const toggle = screen.getByText("Ribosomes").parentElement as Element
   fireEvent.click(toggle)
 
   expect(asFragment()).toMatchSnapshot()
   expect(toggle.className).toBe( "ToggleOption selected")
-  expect(screen.getByText("Cell wall").className).toBe("ToggleOption")
+  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("ToggleOption")
 });
 
 test('marking last incorrect answer correct updates status text', () => {
@@ -75,10 +75,11 @@ test('marking last incorrect answer correct updates status text', () => {
 
   const statusText = screen.getByText("The answer is incorrect")
 
-  const toggle1 = screen.getByText("Cytoplasm")
+  const toggle1 = screen.getByText("Cytoplasm").parentElement as Element
   fireEvent.click(toggle1)
 
-  const toggle2 = screen.getByText("Impermeable membrane")
+  // TODO: move to eslint file?
+  const toggle2 = screen.getByText("Impermeable membrane").parentElement as Element
   fireEvent.click(toggle2)
 
   expect(asFragment()).toMatchSnapshot()
@@ -88,13 +89,13 @@ test('marking last incorrect answer correct updates status text', () => {
 test('marking last incorrect answer correct locks toggles', () => {
   const { asFragment } = render(<TogglesQuestion question={question} />);
 
-  const toggle1 = screen.getByText("Cytoplasm")
+  const toggle1 = screen.getByText("Cytoplasm").parentElement as Element
   fireEvent.click(toggle1)
 
-  const toggle2 = screen.getByText("Impermeable membrane")
+  const toggle2 = screen.getByText("Impermeable membrane").parentElement as Element
   fireEvent.click(toggle2)
 
-  const lockedToggle = screen.getByText("Ribosomes")
+  const lockedToggle = screen.getByText("Ribosomes").parentElement as Element
   fireEvent.click(lockedToggle)
 
   expect(asFragment()).toMatchSnapshot()
