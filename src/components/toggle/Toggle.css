@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-around;
     /*align-items: center;*/
-    margin: 0 50px;
+    margin: 0 20px;
 
     overflow: hidden;
 }
@@ -18,6 +18,9 @@
 
 .Toggle.stacked .ToggleOption {
     border-radius: 0;
+
+    overflow: initial;
+    white-space: normal;
 }
 
 .ToggleOption {
@@ -26,16 +29,21 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 160%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    text-align: center;
     padding: 20px 0;
 
     color: #FFFFFF;
 
     cursor: pointer;
 
-    flex: 1
+    flex: 1;
+
+
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 /* TODO: CSS variables for color and the likes?*/

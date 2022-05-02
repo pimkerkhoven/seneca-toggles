@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {QuestionPart} from "../../types/Question";
 import './Toggle.css'
 
@@ -34,8 +34,48 @@ interface ToggleProps {
 // TODO: passing down the toggle option is not really nice
 const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle}) => {
     // TODO: block click on toggle option if option equals current answer
+
+    const [isStacked, setIsStacked] = useState<boolean>(false)
+
+    const toggleRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        let stackWidth = Infinity
+
+        function handleResize() {
+            if (!toggleRef.current) {
+                return
+            }
+            const children = toggleRef.current.children
+
+            for (let i = 0; i < children.length; i++) {
+                const child = children.item(i) as HTMLDivElement
+
+                if (child.offsetWidth < child.scrollWidth) {
+                    setIsStacked(true)
+                    if (stackWidth === Infinity || toggleRef.current.offsetWidth > stackWidth) {
+                        stackWidth = toggleRef.current.offsetWidth
+                    }
+
+                    return
+                }
+            }
+
+            if (stackWidth < toggleRef.current.offsetWidth) {
+                setIsStacked(false)
+            }
+        }
+
+        handleResize()
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    const classNames = isStacked ? "Toggle stacked" : "Toggle"
+
     return (
-        <div className="Toggle">
+        <div className={classNames} ref={toggleRef}>
             {options.map(option => {
                 return <ToggleOption
                     key={option}
