@@ -20,7 +20,7 @@ const ToggleOption: React.FC<ToggleOptionProps> = ({optionText, selected, toggle
 
     return (
         <div className={classNames} onClick={handleOnClick}>
-            {optionText}
+            <span>{optionText}</span>
         </div>
     )
 }
@@ -44,40 +44,30 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
     //  We need to display the toggle as a stacked toggle, with the options stacked
     //  on top of each other instead of next to each other.
     useEffect(() => {
-        // TODO: explain use/purpose of `minStackWidth`
-        // TODO: only works when coming from above real min resize size;
-        //  it is not useful when we start below the real min size, then we
-        //  still have the flickering
-        let minStackWidth = Infinity
-
         function handleResize() {
             if (!toggleRef.current) {
                 return
             }
 
-            // The children of the toggle are the options of the toggle.
-            const children = toggleRef.current.children
+            const children = Array.from(toggleRef.current.children)
 
+            const textWidthsOfChildren = children.map(child => {
+                const textSpan = child.children.item(0) as HTMLSpanElement
 
-            // Loop over all `ToggleOptions` and check for each if it is too narrow
-            //  to display its content. If this is the case for one `ToggleOption`,
-            //  display the `Toggle` as stacked
-            for (let i = 0; i < children.length; i++) {
-                const child = children.item(i) as HTMLDivElement
-
-                if (child.offsetWidth < child.scrollWidth) {
-                    setIsStacked(true)
-
-                    if (minStackWidth === Infinity || toggleRef.current.offsetWidth > minStackWidth) {
-                        minStackWidth = toggleRef.current.offsetWidth
-                    }
-
-                    return
+                if (textSpan) {
+                    // TODO: extract 10 to variable as PADDING
+                    return textSpan.getBoundingClientRect().width + 10
                 }
-            }
 
-            if (toggleRef.current.offsetWidth > minStackWidth ) {
+                return 0
+            })
+
+            const maxSpanWidth = Math.max(...textWidthsOfChildren)
+
+            if (maxSpanWidth * options.length < toggleRef.current.clientWidth) {
                 setIsStacked(false)
+            } else {
+                setIsStacked(true)
             }
         }
 
@@ -85,7 +75,7 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
         window.addEventListener('resize', handleResize)
 
         return () => window.removeEventListener('resize', handleResize)
-    }, [])
+    }, [toggleRef, options.length])
 
     const classNames = isStacked ? "Toggle stacked" : "Toggle"
 
