@@ -8,29 +8,14 @@ interface TogglesQuestionProps {
     question: Question
 }
 
-// TODO: this has assumptions about when to show which correctness level
-// TODO: refactor and move to appropriate position
-function getCorrectnessClass(percentageCorrect: number) {
-    if (percentageCorrect === 1) {
-        return "correct"
-    }
-
-    if (percentageCorrect > 0.5) {
-        return "partially-correct"
-    }
-
-    return "incorrect"
-}
-
 const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, parts}}) => {
     // Indicates how many parts of the question are answered correct
-    // TODO: consistent naming of boolean variables is.../are.../has...
     const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState<number>(0)
-
     const [answers, setAnswers] = useState<string[]>([])
 
     function handleToggleAnswer(partIndex: number) {
-        return function (option: string) {
+        // Creates the specific function for a certain part
+        return function(option: string) {
             // It is not possible to change an answer, when all
             // answers are already correct
             if (numberOfCorrectAnswers === parts.length) {
@@ -49,7 +34,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
 
     // Before the first render shuffle the parts of the question and also shuffle their options
     // Next we initialize the initial answers for each part. We make sure the question never starts
-    // in a completely answered formation
+    // in a completely answered formation.
     useEffect(() => {
         shuffleArray(parts)
         parts.forEach(part => shuffleArray(part.options))
@@ -98,6 +83,9 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     }, [answers, parts])
 
 
+    // The correctness class shows what percentage of the question parts is answered correctly.
+    //  Between 0 and 50% is incorrect, 50% and 100% is partially correct and 100% is correct.
+    //  Each class has its own color scheme (red, yellow, green).
     const correctnessClass = getCorrectnessClass(numberOfCorrectAnswers / parts.length)
 
     const resultText = numberOfCorrectAnswers === parts.length
@@ -120,3 +108,17 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
 }
 
 export default TogglesQuestion
+
+// TODO: this has assumptions about when to show which correctness level
+// TODO: refactor and move to appropriate position
+function getCorrectnessClass(percentageCorrect: number) {
+    if (percentageCorrect === 1) {
+        return "correct"
+    }
+
+    if (percentageCorrect >= 0.5) {
+        return "partially-correct"
+    }
+
+    return "incorrect"
+}

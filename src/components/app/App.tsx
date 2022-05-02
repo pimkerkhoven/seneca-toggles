@@ -50,7 +50,6 @@ function App() {
     setActiveQuestionIndex(prevState => (prevState + 1) % questions.length)
   }
 
-  // TODO: change cursor to pointer when hovering (un)selected options
   // TODO: search if there are accessibility/better options than just using divs
   return <div style={{maxWidth: 900, margin: "0 auto"}}>
     <button onClick={nextQuestion}>Next Question</button>
