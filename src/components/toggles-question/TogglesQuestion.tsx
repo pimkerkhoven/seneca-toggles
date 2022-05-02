@@ -14,7 +14,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     const [answers, setAnswers] = useState<string[]>([])
 
     function handleToggleAnswer(partIndex: number) {
-        // Creates the specific function for a certain part
+        // Create the specific function for answering a certain part
         return function(option: string) {
             // It is not possible to change an answer, when all
             // answers are already correct
