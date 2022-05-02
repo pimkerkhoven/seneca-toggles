@@ -44,6 +44,10 @@
     font-size: 32px;
 }
 
+.TogglesQuestion > * {
+    margin-bottom: 24px;
+}
+
 @media screen and (max-width: 600px) {
     .TogglesQuestion h1, .TogglesQuestion h2 {
         line-height: 160%;
@@ -56,8 +60,9 @@
     .TogglesQuestion h2 {
         font-size: 16px;
     }
-}
 
-.TogglesQuestion > * {
-    margin-bottom: 24px;
+    .TogglesQuestion > * {
+        margin-bottom: 32px;
+    }
+
 }

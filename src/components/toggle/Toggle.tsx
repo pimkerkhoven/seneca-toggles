@@ -32,29 +32,6 @@ interface ToggleProps {
     onToggle: (option: string) => void
 }
 
-
-// {width: sliderWidth + "%", left: sliderPosition + "%"}
-
-function determineStyleFromOptionsAndLayout(numberOfOptions: number, currentAnswerIndex: number, isStacked: boolean) {
-    const style = { width: "0", height: "0", left: "0", top: "0"}
-
-    if (isStacked) {
-        const height = 100 / numberOfOptions
-        style.width = "100%"
-        style.height = height + "%"
-        style.left = "0"
-        style.top = height * currentAnswerIndex + "%"
-    } else {
-        const width = 100 / numberOfOptions
-        style.width = width + "%"
-        style.height = "100%"
-        style.left = width * currentAnswerIndex + "%"
-        style.top = "0"
-    }
-
-    return style
-}
-
 // TODO: passing down the toggle option is not really nice
 const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle}) => {
     // TODO: block click on toggle option if option equals current answer
@@ -63,29 +40,43 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
 
     const toggleRef = useRef<HTMLDivElement | null>(null)
 
+    // Handle resizing of window. If options become to wide for their container.
+    //  We need to display the toggle as a stacked toggle, with the options stacked
+    //  on top of each other instead of next to each other.
     useEffect(() => {
-        let stackWidth = Infinity
+        // TODO: explain use/purpose of `minStackWidth`
+        // TODO: only works when coming from above real min resize size;
+        //  it is not useful when we start below the real min size, then we
+        //  still have the flickering
+        let minStackWidth = Infinity
 
         function handleResize() {
             if (!toggleRef.current) {
                 return
             }
+
+            // The children of the toggle are the options of the toggle.
             const children = toggleRef.current.children
 
+
+            // Loop over all `ToggleOptions` and check for each if it is too narrow
+            //  to display its content. If this is the case for one `ToggleOption`,
+            //  display the `Toggle` as stacked
             for (let i = 0; i < children.length; i++) {
                 const child = children.item(i) as HTMLDivElement
 
                 if (child.offsetWidth < child.scrollWidth) {
                     setIsStacked(true)
-                    if (stackWidth === Infinity || toggleRef.current.offsetWidth > stackWidth) {
-                        stackWidth = toggleRef.current.offsetWidth
+
+                    if (minStackWidth === Infinity || toggleRef.current.offsetWidth > minStackWidth) {
+                        minStackWidth = toggleRef.current.offsetWidth
                     }
 
                     return
                 }
             }
 
-            if (stackWidth < toggleRef.current.offsetWidth) {
+            if (toggleRef.current.offsetWidth > minStackWidth ) {
                 setIsStacked(false)
             }
         }
@@ -99,11 +90,11 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
     const classNames = isStacked ? "Toggle stacked" : "Toggle"
 
     const currentAnswerIndex = options.findIndex(option => option === currentAnswer)
-    const style = determineStyleFromOptionsAndLayout(options.length, currentAnswerIndex, isStacked)
+    const sliderPosition = getSliderPosition(options.length, currentAnswerIndex, isStacked)
 
     return (
         <div className={classNames} ref={toggleRef}>
-            <div className="slider" style={style} />
+            <div className="slider" style={sliderPosition} />
             {options.map(option => {
                 return <ToggleOption
                     key={option}
@@ -116,3 +107,33 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
 }
 
 export default Toggle
+
+
+/**
+ * TODO: finish documentation
+ *
+ * @param numberOfOptions
+ * @param currentAnswerIndex
+ * @param isStacked
+ */
+function getSliderPosition(numberOfOptions: number,
+                           currentAnswerIndex: number,
+                           isStacked: boolean): React.CSSProperties {
+    const size = 100 / numberOfOptions
+
+    if (isStacked) {
+        return {
+            width: "100%",
+            height: size + "%",
+            left: 0,
+            top: size * currentAnswerIndex + "%"
+        }
+    }
+
+    return {
+        width: size + "%",
+        height: "100%",
+        left: size * currentAnswerIndex + "%",
+        top: 0
+    }
+}

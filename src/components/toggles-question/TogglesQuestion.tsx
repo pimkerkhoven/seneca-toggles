@@ -8,8 +8,8 @@ interface TogglesQuestionProps {
     question: Question
 }
 
-// TODO: this has assumptions
-// TODO: refactor and moe to appropriate position
+// TODO: this has assumptions about when to show which correctness level
+// TODO: refactor and move to appropriate position
 function getCorrectnessClass(percentageCorrect: number) {
     if (percentageCorrect === 1) {
         return "correct"
@@ -23,31 +23,36 @@ function getCorrectnessClass(percentageCorrect: number) {
 }
 
 const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, parts}}) => {
-    // Indicates whether the question is answered correctly (i.e. if all parts are answered correctly)
+    // Indicates how many parts of the question are answered correct
     // TODO: consistent naming of boolean variables is.../are.../has...
     const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState<number>(0)
 
-    // TODO: make sure never starts in answered formation
     const [answers, setAnswers] = useState<string[]>([])
 
-    // TODO: include event.preventDefault
     function handleToggleAnswer(partIndex: number) {
         return function (option: string) {
+            // It is not possible to change an answer, when all
+            // answers are already correct
             if (numberOfCorrectAnswers === parts.length) {
                 return
             }
 
             setAnswers(prevState =>
-                [...prevState.slice(0, partIndex), option, ...prevState.slice(partIndex + 1)])
+                [
+                    ...prevState.slice(0, partIndex),
+                    option,
+                    ...prevState.slice(partIndex + 1)
+                ]
+            )
         }
     }
 
+    // Before the first render shuffle the parts of the question and also shuffle their options
+    // Next we initialize the initial answers for each part. We make sure the question never starts
+    // in a completely answered formation
     useEffect(() => {
         shuffleArray(parts)
-
-        for (let i = 0; i < parts.length; i++) {
-            shuffleArray(parts[i].options)
-        }
+        parts.forEach(part => shuffleArray(part.options))
 
         // Make sure less than 50% of all answers is initialised as the correct answer
         // We do not initialise all questions as incorrect as this would make the correct
@@ -56,14 +61,19 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         const maxInitialisedCorrectly = Math.floor(0.5 * parts.length)
 
         // TODO: assumption at least two options
-        const initialAnswers = parts.map(part => {
+        const initialAnswers: string[] = parts.map(part => {
             let index = randomNumber(0, part.options.length)
             const answer = part.options[index]
 
-            if (answer === part.answer && initialisedAsCorrectAnswer < maxInitialisedCorrectly) {
-                initialisedAsCorrectAnswer++
-                return answer
-            } else if(answer === part.answer && initialisedAsCorrectAnswer >= maxInitialisedCorrectly) {
+            if (answer === part.answer) {
+                if (initialisedAsCorrectAnswer < maxInitialisedCorrectly) {
+                    initialisedAsCorrectAnswer += 1
+                    return answer
+                }
+
+                // If we already initialised too many parts with the correct answer
+                //  we skip to the option after the correct option. We make sure to wrap
+                //  around to not get an undefined answer.
                 index = (index + 1) % part.options.length
                 return part.options[index]
             }
@@ -77,21 +87,22 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     useEffect(() => {
         // Check for each question if the current answer is the actual answer for the question
         // Keep a count of how many are answered correct.
-        // TODO: maybe there is a dedicated array function for this?
-        const currentNumberOfCorrectAnswers = answers.reduce((accumulator, currentAnswer, index) => {
-            if (parts[index].answer === currentAnswer) {
-                return accumulator + 1
-            }
-
-            return accumulator
-        }, 0)
+        const currentNumberOfCorrectAnswers =
+            answers.reduce((accumulator, currentAnswer, index) =>
+                    parts[index].answer === currentAnswer
+                        ? accumulator + 1
+                        : accumulator
+                , 0)
 
         setNumberOfCorrectAnswers(currentNumberOfCorrectAnswers)
     }, [answers, parts])
 
 
-    const isSolved = numberOfCorrectAnswers === parts.length
     const correctnessClass = getCorrectnessClass(numberOfCorrectAnswers / parts.length)
+
+    const resultText = numberOfCorrectAnswers === parts.length
+        ? "The answer is correct!"
+        : "The answer is incorrect"
 
     return (
         <div className={"TogglesQuestion " + correctnessClass} >
@@ -103,7 +114,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
                     onToggle={handleToggleAnswer(partIndex)}
                     currentAnswer={answers[partIndex]} />
             )}
-            <h2>{isSolved ? "The answer is correct!" : "The answer is incorrect"}</h2>
+            <h2>{resultText}</h2>
         </div>
     )
 }
