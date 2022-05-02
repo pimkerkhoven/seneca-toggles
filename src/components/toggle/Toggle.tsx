@@ -31,6 +31,29 @@ interface ToggleProps {
     onToggle: (option: string) => void
 }
 
+
+// {width: sliderWidth + "%", left: sliderPosition + "%"}
+
+function determineStyleFromOptionsAndLayout(numberOfOptions: number, currentAnswerIndex: number, isStacked: boolean) {
+    const style = { width: "0", height: "0", left: "0", top: "0"}
+
+    if (isStacked) {
+        const height = 100 / numberOfOptions
+        style.width = "100%"
+        style.height = height + "%"
+        style.left = "0"
+        style.top = height * currentAnswerIndex + "%"
+    } else {
+        const width = 100 / numberOfOptions
+        style.width = width + "%"
+        style.height = "100%"
+        style.left = width * currentAnswerIndex + "%"
+        style.top = "0"
+    }
+
+    return style
+}
+
 // TODO: passing down the toggle option is not really nice
 const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle}) => {
     // TODO: block click on toggle option if option equals current answer
@@ -74,8 +97,12 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
 
     const classNames = isStacked ? "Toggle stacked" : "Toggle"
 
+    const currentAnswerIndex = options.findIndex(option => option === currentAnswer)
+    const style = determineStyleFromOptionsAndLayout(options.length, currentAnswerIndex, isStacked)
+    
     return (
         <div className={classNames} ref={toggleRef}>
+            <div className="slider" style={style} />
             {options.map(option => {
                 return <ToggleOption
                     key={option}

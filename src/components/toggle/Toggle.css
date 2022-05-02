@@ -8,6 +8,7 @@
     margin: 0 20px;
 
     overflow: hidden;
+    position: relative;
 }
 
 .correct .Toggle {
@@ -54,6 +55,14 @@
 
     overflow: hidden;
     white-space: nowrap;
+    z-index: 999;
+    transition: color 0.2s ease-in-out;
+}
+
+/* TODO: CSS variables for color and the likes?*/
+.ToggleOption.selected {
+    /*background-color: #F8CAA3;*/
+    color: #9F938B;
 }
 
 @media screen and (max-width: 600px) {
@@ -64,20 +73,29 @@
 }
 
 
-/* TODO: CSS variables for color and the likes?*/
-.ToggleOption.selected {
-    /*background-color: #F8CAA3;*/
-    color: #9F938B;
+/* TODO: consistent naming of class Capitals or no capitals */
+.slider {
+    /*background-color: red;*/
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    z-index: 0;
+    transition: left 0.15s ease-in-out, top 0.15s ease-in-out;
+    border-radius: 100px;
 }
 
-.correct .ToggleOption.selected{
+.stacked .slider {
+    border-radius: 0;
+}
+
+.correct .slider{
     background-color: #A5E7E2;
 }
 
-.partially-correct .ToggleOption.selected{
+.partially-correct .slider{
     background-color: #F8CAA3;
 }
 
-.incorrect .ToggleOption.selected{
+.incorrect .slider{
     background-color: #F2CBBD;
 }

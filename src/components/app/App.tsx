@@ -12,7 +12,7 @@ function App() {
     title: "An animal cell contains:",
     parts: [
       {
-        options: ["Cell wall", "Ribosomes"],
+        options: ["Cell wall", "Ribosomes", "Glucose", "Printers"],
         answer: "Cell wall"
       },
       {
