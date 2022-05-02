@@ -93,7 +93,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         : "The answer is incorrect"
 
     return (
-        <div className={`TogglesQuestion ${correctnessClass}`}>
+        <div className={`toggles-question ${correctnessClass}`}>
             <h1>{title}</h1>
             {parts.map((part, partIndex) =>
                 <Toggle

@@ -60,7 +60,7 @@ const Toggle: React.FC<ToggleProps> = ({questionPart: {options}, currentAnswer, 
     const sliderPosition = getSliderPosition(options.length, currentAnswerIndex, isStacked)
 
     return (
-        <div className={`Toggle${isStacked ? " stacked" : ""}`} ref={toggleRef}>
+        <div className={`toggle${isStacked ? " stacked" : ""}`} ref={toggleRef}>
             <div className="slider" style={sliderPosition} />
             {options.map(option => {
                 return <ToggleOption
@@ -90,7 +90,7 @@ const ToggleOption: React.FC<ToggleOptionProps> = ({optionText, selected, onTogg
     }
 
     return (
-        <div className={`ToggleOption${selected ? " selected" : ""}`} onClick={handleToggle}>
+        <div className={`toggle-option${selected ? " selected" : ""}`} onClick={handleToggle}>
             <span>{optionText}</span>
         </div>
     )

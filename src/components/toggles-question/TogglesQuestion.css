@@ -1,32 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
 
-.TogglesQuestion {
+.toggles-question {
     font-family: 'Mulish', sans-serif;
 }
 
-.TogglesQuestion {
-    /*background: linear-gradient(180deg, #F6B868 0%, #EE6B2D 100%);*/
+.toggles-question {
     display: flex;
     flex-direction: column;
-    /*max-width: 900px;*/
     margin: 0 auto;
-    /*justify-content: center;*/
-    /*align-items: center;*/
 }
 
-.TogglesQuestion.correct {
+.toggles-question.correct {
     background: linear-gradient(180deg, #76E0C2 0%, #59CADA 100%);
 }
 
-.TogglesQuestion.partially-correct {
+.toggles-question.partially-correct {
     background: linear-gradient(180deg, #F6B868 0%, #EE6B2D 100%);
 }
 
-.TogglesQuestion.incorrect {
+.toggles-question.incorrect {
     background: linear-gradient(180deg, #F1B496 0%, #EA806A 100%)
 }
 
-.TogglesQuestion h1, .TogglesQuestion h2 {
+.toggles-question h1, .toggles-question h2 {
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
@@ -36,32 +32,42 @@
     color: #FFFFFF;
 }
 
-.TogglesQuestion h1 {
+.toggles-question h1 {
     font-size: 40px;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-.TogglesQuestion h2 {
+.toggles-question h2 {
     font-size: 32px;
+
+    margin-top: 36px;
 }
 
-.TogglesQuestion > * {
+.toggles-question > .toggle {
     margin-bottom: 24px;
 }
 
 @media screen and (max-width: 600px) {
-    .TogglesQuestion h1, .TogglesQuestion h2 {
+    .toggles-question h1, .toggles-question h2 {
         line-height: 160%;
     }
 
-    .TogglesQuestion h1 {
+    .toggles-question h1 {
         font-size: 20px;
+
+        margin-top: 16px;
+        margin-bottom: 32px;
     }
 
-    .TogglesQuestion h2 {
+    .toggles-question h2 {
         font-size: 16px;
+
+        margin-top: 0;
     }
 
-    .TogglesQuestion > * {
+    .toggles-question > .toggle {
         margin-bottom: 32px;
     }
 

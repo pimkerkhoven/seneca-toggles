@@ -1,68 +1,70 @@
 /* TODO: make logical grouping of css properties */
-.Toggle {
+.toggle {
     box-sizing: border-box;
     border-radius: 100px;
+
     display: flex;
     justify-content: space-around;
-    /*align-items: center;*/
+
     margin: 0 20px;
 
     overflow: hidden;
     position: relative;
 }
 
-.correct .Toggle {
+.correct .toggle {
     border: 2px solid #FBFBFB;
 }
 
-.partially-correct .Toggle {
+.partially-correct .toggle {
     border: 2px solid #F9D29F;
 }
 
-.incorrect .Toggle {
+.incorrect .toggle {
     border: 2px solid #FBFBFB;
 }
 
-.Toggle.stacked {
+.toggle.stacked {
     border-radius: 24px;
     flex-direction: column;
 }
 
-.Toggle.stacked .ToggleOption {
+.toggle.stacked .toggle-option {
     border-radius: 0;
 
     overflow: initial;
     white-space: normal;
 }
 
-.ToggleOption {
+.toggle-option {
     box-sizing: border-box;
     border-radius: 100px;
+
     font-weight: 700;
     font-size: 24px;
     line-height: 160%;
     text-align: center;
-    padding: 20px 0;
 
     color: #FFFFFF;
-
-    cursor: pointer;
+    transition: color 0.2s ease-in-out;
 
     flex: 1;
+    z-index: 999;
+    padding: 20px 0;
 
     overflow: hidden;
     white-space: nowrap;
-    z-index: 999;
-    transition: color 0.2s ease-in-out;
+
+    cursor: pointer;
 }
 
 /* TODO: CSS variables for color and the likes?*/
-.ToggleOption.selected {
+.toggle-option.selected {
     color: #9F938B;
 }
 
 @media screen and (max-width: 600px) {
-    .ToggleOption {
+    .toggle-option {
         font-size: 18px;
         padding: 15px 0;
     }
