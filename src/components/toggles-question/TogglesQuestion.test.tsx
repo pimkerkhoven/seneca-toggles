@@ -6,20 +6,7 @@ import * as util from "../../util";
 import TogglesQuestion from "./TogglesQuestion";
 import {Question} from "../../types/Question";
 
-
-/**
- * - test snapshot of initial render
- * - test clicking answer toggles option
- * - test putting correct answer updates status text
- * - test putting correct answer locks toggles
- * - TODO: add test for testing gradient color/adding correctness class
- */
-
 const question: Question = {
-  // TODO: Where to format question? Assume is in correct format (capitalization?)
-  //  Same for options
-  // TODO: Assume options are all unique within part
-  // TODO: State assumption of question format.
   title: "An animal cell contains:",
   parts: [
     {
@@ -37,8 +24,6 @@ const question: Question = {
   ]
 }
 
-// TODO: move tests to correct file!
-
 beforeEach(() => {
   const shuffleArraySpy = jest.spyOn(util, 'shuffleArray')
   shuffleArraySpy.mockImplementation(_ => { })
@@ -54,9 +39,9 @@ test('renders the component', () => {
 
   expect(asFragment()).toMatchSnapshot();
 
-  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("ToggleOption selected")
-  expect((screen.getByText("Chloroplast").parentElement as Element).className).toBe("ToggleOption selected")
-  expect((screen.getByText("Partial membrane").parentElement as Element).className).toBe("ToggleOption selected")
+  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("toggle-option selected")
+  expect((screen.getByText("Chloroplast").parentElement as Element).className).toBe("toggle-option selected")
+  expect((screen.getByText("Partial membrane").parentElement as Element).className).toBe("toggle-option selected")
 });
 
 test('toggling an option marks it as selected', () => {
@@ -66,8 +51,8 @@ test('toggling an option marks it as selected', () => {
   fireEvent.click(toggle)
 
   expect(asFragment()).toMatchSnapshot()
-  expect(toggle.className).toBe( "ToggleOption selected")
-  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("ToggleOption")
+  expect(toggle.className).toBe( "toggle-option selected")
+  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("toggle-option")
 });
 
 test('marking last incorrect answer correct updates status text', () => {
@@ -78,7 +63,6 @@ test('marking last incorrect answer correct updates status text', () => {
   const toggle1 = screen.getByText("Cytoplasm").parentElement as Element
   fireEvent.click(toggle1)
 
-  // TODO: move to eslint file?
   const toggle2 = screen.getByText("Impermeable membrane").parentElement as Element
   fireEvent.click(toggle2)
 
@@ -99,7 +83,25 @@ test('marking last incorrect answer correct locks toggles', () => {
   fireEvent.click(lockedToggle)
 
   expect(asFragment()).toMatchSnapshot()
-  expect(lockedToggle.className).toBe("ToggleOption")
+  expect(lockedToggle.className).toBe("toggle-option")
+});
+
+test('correctness class changes as more options are answered correct', () => {
+  render(<TogglesQuestion question={question} />);
+
+  const container = screen.getByText("An animal cell contains:").parentElement as Element
+  expect(container.className).toBe("toggles-question incorrect")
+
+  const toggle1 = screen.getByText("Cytoplasm").parentElement as Element
+  fireEvent.click(toggle1)
+  expect(container.className).toBe("toggles-question partially-correct")
+
+  const toggle2 = screen.getByText("Impermeable membrane").parentElement as Element
+  fireEvent.click(toggle2)
+  expect(container.className).toBe("toggles-question correct")
+
+  const lockedToggle = screen.getByText("Ribosomes").parentElement as Element
+  fireEvent.click(lockedToggle)
 });
 
 

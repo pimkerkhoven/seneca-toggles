@@ -3,27 +3,27 @@
 exports[`marking last incorrect answer correct locks toggles 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion correct"
+    class="toggles-question correct"
   >
     <h1>
       An animal cell contains:
     </h1>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 0%; top: 0px;"
       />
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Cell wall
         </span>
       </div>
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Ribosomes
@@ -31,21 +31,21 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 0%; top: 0px;"
       />
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Cytoplasm
         </span>
       </div>
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Chloroplast
@@ -53,21 +53,21 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 50%; top: 0px;"
       />
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Partial membrane
         </span>
       </div>
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Impermeable membrane
@@ -84,27 +84,27 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
 exports[`marking last incorrect answer correct updates status text 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion correct"
+    class="toggles-question correct"
   >
     <h1>
       An animal cell contains:
     </h1>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 0%; top: 0px;"
       />
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Cell wall
         </span>
       </div>
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Ribosomes
@@ -112,21 +112,21 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 0%; top: 0px;"
       />
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Cytoplasm
         </span>
       </div>
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Chloroplast
@@ -134,21 +134,21 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 50%; top: 0px;"
       />
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Partial membrane
         </span>
       </div>
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Impermeable membrane
@@ -165,27 +165,27 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
 exports[`renders the component 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion incorrect"
+    class="toggles-question incorrect"
   >
     <h1>
       An animal cell contains:
     </h1>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 0%; top: 0px;"
       />
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Cell wall
         </span>
       </div>
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Ribosomes
@@ -193,21 +193,21 @@ exports[`renders the component 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 50%; top: 0px;"
       />
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Cytoplasm
         </span>
       </div>
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Chloroplast
@@ -215,21 +215,21 @@ exports[`renders the component 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 0%; top: 0px;"
       />
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Partial membrane
         </span>
       </div>
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Impermeable membrane
@@ -246,27 +246,27 @@ exports[`renders the component 1`] = `
 exports[`toggling an option marks it as selected 1`] = `
 <DocumentFragment>
   <div
-    class="TogglesQuestion incorrect"
+    class="toggles-question incorrect"
   >
     <h1>
       An animal cell contains:
     </h1>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 50%; top: 0px;"
       />
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Cell wall
         </span>
       </div>
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Ribosomes
@@ -274,21 +274,21 @@ exports[`toggling an option marks it as selected 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 50%; top: 0px;"
       />
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Cytoplasm
         </span>
       </div>
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Chloroplast
@@ -296,21 +296,21 @@ exports[`toggling an option marks it as selected 1`] = `
       </div>
     </div>
     <div
-      class="Toggle"
+      class="toggle"
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: 0%; top: 0px;"
       />
       <div
-        class="ToggleOption selected"
+        class="toggle-option selected"
       >
         <span>
           Partial membrane
         </span>
       </div>
       <div
-        class="ToggleOption"
+        class="toggle-option"
       >
         <span>
           Impermeable membrane
