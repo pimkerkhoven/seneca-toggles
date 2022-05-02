@@ -16,7 +16,7 @@ question = {
 }
 ```
 
-The number of options per part is unlimited in theory, but in practice using more than four/five
+The number of options per part is unlimited in theory, but in practice using more than four or five
 will give a very cluttered screen.
 
 ## Example Usage
@@ -28,7 +28,9 @@ import TogglesQuestion from "./TogglesQuestion";
 ```
 
 The question parts and the options for each part are displayed in random order. This order
-is randomized each time a new question is provided.
+is randomized each time a new question is provided. 
+
+Questions are __never__ initialized with more than 50% of the toggles already in the correct position.
 
 ## Assumptions
 - Each question part has at least two options
@@ -37,7 +39,7 @@ is randomized each time a new question is provided.
 - All text is correctly formatted and capitalized
 
 ## Tests
-The component functionality is tested. These tests can be run with `npm test`
+The component functionality is tested. These tests can be run with `npm test`.
 
 ## Running a demo
 A demo of the component with two questions preloaded can be started by running `npm start`. 
