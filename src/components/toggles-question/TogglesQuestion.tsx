@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { Question } from "../../types/Question";
 import Toggle from "../toggle/Toggle";
 import "./TogglesQuestion.css"
+import {shuffleArray} from "../../util/shuffle";
 
 interface TogglesQuestionProps {
     question: Question
 }
 
+// TODO: this has assumptions
 function calculateGradient(percentageCorrect: number) {
     if (percentageCorrect === 1) {
         return "correct"
@@ -19,13 +21,18 @@ function calculateGradient(percentageCorrect: number) {
     return "incorrect"
 }
 
+// TODO: move to util
+function randomNumber(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, parts}}) => {
     // Indicates whether the question is answered correctly (i.e. if all parts are answered correctly)
     // TODO: consistent naming of boolean variables is.../are.../has...
     const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState<number>(0)
 
     // TODO: make sure never starts in answered formation
-    const [answers, setAnswers] = useState<string[]>(parts.map(part => part.options[0]))
+    const [answers, setAnswers] = useState<string[]>([])
 
     // TODO: include event.preventDefault
     function handleToggleAnswer(partIndex: number) {
@@ -38,6 +45,35 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
                 [...prevState.slice(0, partIndex), option, ...prevState.slice(partIndex + 1)])
         }
     }
+
+    useEffect(() => {
+        shuffleArray(parts)
+
+        for (let i = 0; i < parts.length; i++) {
+            shuffleArray(parts[i].options)
+        }
+
+        let initialisedAsCorrectAnswer = 0
+        const maxInitialisedCorrectly = Math.floor(0.5 * parts.length)
+
+        // TODO: assumption at least two options
+        const initialAnswers = parts.map(part => {
+            let index = randomNumber(0, part.options.length)
+            const answer = part.options[index]
+
+            if (answer === part.answer && initialisedAsCorrectAnswer < maxInitialisedCorrectly) {
+                initialisedAsCorrectAnswer++
+                return answer
+            } else if(answer === part.answer && initialisedAsCorrectAnswer >= maxInitialisedCorrectly) {
+                index = (index + 1) % part.options.length
+                return part.options[index]
+            }
+
+            return answer
+        })
+
+        setAnswers(initialAnswers)
+    }, [parts])
 
     useEffect(() => {
         // Check for each question if the current answer is the actual answer for the question

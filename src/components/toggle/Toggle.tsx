@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
+
 import {QuestionPart} from "../../types/Question";
 import './Toggle.css'
 
@@ -99,7 +100,7 @@ const Toggle: React.FC<ToggleProps> = ({part: {options}, currentAnswer, onToggle
 
     const currentAnswerIndex = options.findIndex(option => option === currentAnswer)
     const style = determineStyleFromOptionsAndLayout(options.length, currentAnswerIndex, isStacked)
-    
+
     return (
         <div className={classNames} ref={toggleRef}>
             <div className="slider" style={style} />

@@ -28,7 +28,9 @@ function App() {
 
   // TODO: change cursor to pointer when hovering (un)selected options
   // TODO: search if there are accessibility/better options than just using divs
-  return <TogglesQuestion question={question} />
+  return <div style={{maxWidth: 900, margin: "0 auto"}}>
+    <TogglesQuestion question={question} />
+  </div>
 }
 
 export default App;
