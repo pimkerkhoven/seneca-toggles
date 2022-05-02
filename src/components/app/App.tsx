@@ -31,7 +31,7 @@ function App() {
         answer: "Ecology book"
       },
       {
-        options: ["Apple", "Banana", "Water melon"],
+        options: ["Apple", "Banana", "Watermelon"],
         answer: "Apple"
       }
     ]
