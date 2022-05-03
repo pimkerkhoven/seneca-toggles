@@ -102,18 +102,32 @@ function getSliderPosition(numberOfOptions: number,
     const size = 100 / numberOfOptions
 
     if (isStacked) {
+        // When stacked, the border radius of the slider depends on its position.
+        //  If it is at the top, we only need a border radius at the top. If it is
+        //  at the bottom, we need a border radius at the bottom of the slider.
+        //  And if it is somewhere in the middle, we do not need a border radius.
+        let borderRadius = "0"
+        if (currentAnswerIndex === 0) {
+            borderRadius = "24px 24px 0 0"
+        } else if (currentAnswerIndex === numberOfOptions - 1) {
+            borderRadius = "0 0 24px 24px"
+        }
+
+        // Subtract 2px from left and top, in order to position slider on top of the border
+        //  of the underlying toggle component
         return {
             width: "100%",
-            height: size + "%",
-            left: 0,
-            top: size * currentAnswerIndex + "%"
+            height: `${size}%`,
+            left: "-2px",
+            top: `calc(${size * currentAnswerIndex}% - 2px)`,
+            borderRadius
         }
     }
 
     return {
-        width: size + "%",
+        width: `${size}%`,
         height: "100%",
-        left: size * currentAnswerIndex + "%",
-        top: 0
+        left: `calc(${size * currentAnswerIndex}% - 2px)`,
+        top: "-2px"
     }
 }

@@ -7,7 +7,6 @@
 
     margin: 0 20px;
 
-    overflow: hidden;
     position: relative;
 }
 
@@ -56,8 +55,16 @@
     cursor: pointer;
 }
 
-.toggle-option.selected {
+.correct .toggle-option.selected {
+    color: #4CAD94;
+}
+
+.partially-correct .toggle-option.selected {
     color: #9F938B;
+}
+
+.incorrect .toggle-option.selected {
+    color: #E47958;
 }
 
 @media screen and (max-width: 600px) {
@@ -72,22 +79,21 @@
     height: 100%;
     width: 50%;
     z-index: 0;
-    transition: left 0.15s ease-in-out, top 0.15s ease-in-out;
+    transition: left 0.15s ease-in-out, top 0.15s ease-in-out, border-radius 0.2s ease-in-out;
     border-radius: 100px;
-}
-
-.stacked .slider {
-    border-radius: 0;
 }
 
 .correct .slider{
     background-color: #A5E7E2;
+    border: 2px solid #A5E7E2;
 }
 
 .partially-correct .slider{
     background-color: #F8CAA3;
+    border: 2px solid #F8CAA3;
 }
 
 .incorrect .slider{
     background-color: #F2CBBD;
+    border: 2px solid #F2CBBD;
 }
