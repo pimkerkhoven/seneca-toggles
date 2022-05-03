@@ -22,9 +22,10 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
 
         // Make sure less than 50% of all answers is initialised as the correct answer
         // We do not initialise all questions as incorrect as this would make the correct
-        // answer too obvious.
+        // answer too obvious. We multiply by 0.49, because using 0.5 can result in initializing
+        // the question as partially correct for an even number of parts.
         let initialisedAsCorrectAnswer = 0
-        const maxInitialisedCorrectly = Math.floor(0.5 * parts.length)
+        const maxInitialisedCorrectly = Math.floor(0.49 * parts.length)
 
         const initialAnswers: string[] = parts.map(part => {
             let index = randomNumber(0, part.options.length)
@@ -61,7 +62,15 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
                 , 0)
 
         setNumberOfCorrectAnswers(currentNumberOfCorrectAnswers)
-    }, [answers, parts])
+
+        // `parts` is not included in the dependencies array, because this causes an
+        // error when changing between questions that do not have an equal number of parts.
+        // This is a result of running this effect before the initial answers for the new question
+        // are set. This leads to a mismatch between parts and answers.
+        // Because we change the answers when a new question is loaded (with the effect above), this
+        // effect will always run for a new question, but now after the answers match the current parts.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [answers])
 
     function createHandleToggleAnswerForQuestionPart(partIndex: number) {
         // Create the specific function for answering a certain part
