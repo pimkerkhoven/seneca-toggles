@@ -13,7 +13,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(0% - 2px); top: -2px;"
       />
       <div
         class="toggle-option selected"
@@ -35,7 +35,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(0% - 2px); top: -2px;"
       />
       <div
         class="toggle-option selected"
@@ -57,7 +57,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
         class="toggle-option"
@@ -94,7 +94,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(0% - 2px); top: -2px;"
       />
       <div
         class="toggle-option selected"
@@ -116,7 +116,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(0% - 2px); top: -2px;"
       />
       <div
         class="toggle-option selected"
@@ -138,7 +138,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
         class="toggle-option"
@@ -175,7 +175,7 @@ exports[`renders the component 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(0% - 2px); top: -2px;"
       />
       <div
         class="toggle-option selected"
@@ -197,7 +197,7 @@ exports[`renders the component 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
         class="toggle-option"
@@ -219,7 +219,7 @@ exports[`renders the component 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(0% - 2px); top: -2px;"
       />
       <div
         class="toggle-option selected"
@@ -256,7 +256,7 @@ exports[`toggling an option marks it as selected 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
         class="toggle-option"
@@ -278,7 +278,7 @@ exports[`toggling an option marks it as selected 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 50%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
         class="toggle-option"
@@ -300,7 +300,7 @@ exports[`toggling an option marks it as selected 1`] = `
     >
       <div
         class="slider"
-        style="width: 50%; height: 100%; left: 0%; top: 0px;"
+        style="width: 50%; height: 100%; left: calc(0% - 2px); top: -2px;"
       />
       <div
         class="toggle-option selected"
