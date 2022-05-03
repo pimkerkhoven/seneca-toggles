@@ -51,7 +51,7 @@ const Toggle: React.FC<ToggleProps> = ({questionPart: {options}, currentAnswer, 
         window.addEventListener('resize', handleResize)
 
         return () => window.removeEventListener('resize', handleResize)
-    }, [toggleRef, options.length])
+    }, [toggleRef, options])
 
     const currentAnswerIndex = options.findIndex(option => option === currentAnswer)
 
