@@ -46,7 +46,7 @@ The component functionality is tested. These tests can be run with `npm test`.
 
 ## Running a demo
 A demo of the component with two questions preloaded can be started by running `npm start`. 
-This demo includes a button to rotate through the questions.
+This demo includes a button to rotate through the questions. Run `npm install` before the first run.
 
 ## Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
