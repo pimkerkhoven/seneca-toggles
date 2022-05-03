@@ -13,28 +13,9 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
     const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState<number>(0)
     const [answers, setAnswers] = useState<string[]>([])
 
-    function handleToggleAnswer(partIndex: number) {
-        // Create the specific function for answering a certain part
-        return function(option: string) {
-            // It is not possible to change an answer, when all
-            // answers are already correct
-            if (numberOfCorrectAnswers === parts.length) {
-                return
-            }
-
-            setAnswers(prevState =>
-                [
-                    ...prevState.slice(0, partIndex),
-                    option,
-                    ...prevState.slice(partIndex + 1)
-                ]
-            )
-        }
-    }
-
-    // Before the first render shuffle the parts of the question and also shuffle their options
-    // Next we initialize the initial answers for each part. We make sure the question never starts
-    // in a completely answered formation.
+    // Before the rendering a question shuffle the parts of the question and also shuffle their options.
+    //  Next we initialize the initial answers for each part. We make sure the question never starts
+    //  in a completely answered formation.
     useEffect(() => {
         shuffleArray(parts)
         parts.forEach(part => shuffleArray(part.options))
@@ -68,9 +49,10 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         setAnswers(initialAnswers)
     }, [parts])
 
+    // When a new answer is entered, check how many answers are correct
     useEffect(() => {
-        // Check for each question if the current answer is the actual answer for the question
-        // Keep a count of how many are answered correct.
+        // For each question part check if the current answer is the correct answer.
+        // Keep a count of how many are correct.
         const currentNumberOfCorrectAnswers =
             answers.reduce((totalCorrect, currentAnswer, index) =>
                     parts[index].answer === currentAnswer
@@ -81,6 +63,24 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         setNumberOfCorrectAnswers(currentNumberOfCorrectAnswers)
     }, [answers, parts])
 
+    function handleToggleAnswerForQuestionPart(partIndex: number) {
+        // Create the specific function for answering a certain part
+        return function(option: string) {
+            // It is not possible to change an answer, when all
+            // answers are already correct
+            if (numberOfCorrectAnswers === parts.length) {
+                return
+            }
+
+            setAnswers(prevState =>
+                [
+                    ...prevState.slice(0, partIndex),
+                    option,
+                    ...prevState.slice(partIndex + 1)
+                ]
+            )
+        }
+    }
 
     // The correctness class shows what percentage of the question parts is answered correctly.
     //  Between 0 and 50% is incorrect, 50% and 100% is partially correct and 100% is correct.
@@ -98,7 +98,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
                 <Toggle
                     key={partIndex}
                     questionPart={part}
-                    onToggle={handleToggleAnswer(partIndex)}
+                    onToggle={handleToggleAnswerForQuestionPart(partIndex)}
                     currentAnswer={answers[partIndex]} />
             )}
             <h2>{resultText}</h2>

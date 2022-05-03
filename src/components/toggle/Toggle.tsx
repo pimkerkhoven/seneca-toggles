@@ -14,18 +14,19 @@ const Toggle: React.FC<ToggleProps> = ({questionPart: {options}, currentAnswer, 
 
     const toggleRef = useRef<HTMLDivElement | null>(null)
 
-    // Handle resizing of window. If options become to wide for their container,
-    //  we need to display the toggle as a stacked toggle, with the options stacked
-    //  on top of each other instead of next to each other.
+    // Handle resizing of window. If the options no longer fit next to each other in the toggle
+    //  without overflowing, we need to display the toggle as a stacked toggle.
+    //  We then show the options stacked on top of each other instead of next to each other.
     useEffect(() => {
         function handleResize() {
             if (!toggleRef.current) {
                 return
             }
 
-            // Determine the width of the text of the widest option. This is
+            // Determine the text width of the widest option text. This is
             //  the width we use to calculate if all options fit next to each
-            //  other within the Toggle.
+            //  other within the Toggle. This works because all options have the same
+            //  width, so all options are at least the size of the widest text.
             const maxOptionTextWidth = Array.from(toggleRef.current.children)
                 .reduce((maxSize, child) => {
                     const textSpan = child.children.item(0) as HTMLSpanElement
@@ -55,7 +56,8 @@ const Toggle: React.FC<ToggleProps> = ({questionPart: {options}, currentAnswer, 
     const currentAnswerIndex = options.findIndex(option => option === currentAnswer)
 
     // Set slider position based on which option is currently selected and whether
-    //  the options are stacked or not
+    //  the options are stacked or not. We position the slider behind the currently
+    //  selected option.
     const sliderPosition = getSliderPosition(options.length, currentAnswerIndex, isStacked)
 
     return (
@@ -73,7 +75,6 @@ const Toggle: React.FC<ToggleProps> = ({questionPart: {options}, currentAnswer, 
 }
 
 export default Toggle
-
 
 interface ToggleOptionProps {
     optionText: string,
