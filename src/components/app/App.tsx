@@ -33,6 +33,10 @@ function App() {
       {
         options: ["Apple", "Banana", "Watermelon"],
         answer: "Apple"
+      },
+      {
+        options: ["Glass", "Laptop charger"],
+        answer: "Glass"
       }
     ]
   }]

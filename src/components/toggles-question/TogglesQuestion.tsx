@@ -49,7 +49,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         setAnswers(initialAnswers)
     }, [parts])
 
-    // When a new answer is entered, check how many answers are correct
+    // When a new answer is entered, check how many parts are currently answered correct.
     useEffect(() => {
         // For each question part check if the current answer is the correct answer.
         // Keep a count of how many are correct.
@@ -63,7 +63,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
         setNumberOfCorrectAnswers(currentNumberOfCorrectAnswers)
     }, [answers, parts])
 
-    function handleToggleAnswerForQuestionPart(partIndex: number) {
+    function createHandleToggleAnswerForQuestionPart(partIndex: number) {
         // Create the specific function for answering a certain part
         return function(option: string) {
             // It is not possible to change an answer, when all
@@ -98,7 +98,7 @@ const TogglesQuestion: React.FC<TogglesQuestionProps> = ({question: {title, part
                 <Toggle
                     key={partIndex}
                     questionPart={part}
-                    onToggle={handleToggleAnswerForQuestionPart(partIndex)}
+                    onToggle={createHandleToggleAnswerForQuestionPart(partIndex)}
                     currentAnswer={answers[partIndex]} />
             )}
             <h2>{resultText}</h2>

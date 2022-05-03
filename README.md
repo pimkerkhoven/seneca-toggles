@@ -12,6 +12,9 @@ question = {
     parts: [{
         options: ["Option 1", "Option 2"],
         answer: "Option 1"
+    }, {
+        options: ["Answer 1", "Answer 2", "Answer 3"],
+        answer: "Answer 2"
     }]
 }
 ```
@@ -43,7 +46,7 @@ The component functionality is tested. These tests can be run with `npm test`.
 
 ## Running a demo
 A demo of the component with two questions preloaded can be started by running `npm start`. 
-This demo includes a button to rotate through the question.
+This demo includes a button to rotate through the questions.
 
 ## Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
