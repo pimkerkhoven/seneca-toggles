@@ -9,7 +9,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
       An animal cell contains:
     </h1>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
@@ -23,7 +23,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
         </span>
       </div>
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Ribosomes
@@ -31,7 +31,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
@@ -45,7 +45,7 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
         </span>
       </div>
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Chloroplast
@@ -53,14 +53,14 @@ exports[`marking last incorrect answer correct locks toggles 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Partial membrane
@@ -90,7 +90,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
       An animal cell contains:
     </h1>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
@@ -104,7 +104,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
         </span>
       </div>
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Ribosomes
@@ -112,7 +112,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
@@ -126,7 +126,7 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
         </span>
       </div>
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Chloroplast
@@ -134,14 +134,14 @@ exports[`marking last incorrect answer correct updates status text 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Partial membrane
@@ -171,7 +171,7 @@ exports[`renders the component 1`] = `
       An animal cell contains:
     </h1>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
@@ -185,7 +185,7 @@ exports[`renders the component 1`] = `
         </span>
       </div>
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Ribosomes
@@ -193,14 +193,14 @@ exports[`renders the component 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Cytoplasm
@@ -215,7 +215,7 @@ exports[`renders the component 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
@@ -229,7 +229,7 @@ exports[`renders the component 1`] = `
         </span>
       </div>
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Impermeable membrane
@@ -252,14 +252,14 @@ exports[`toggling an option marks it as selected 1`] = `
       An animal cell contains:
     </h1>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Cell wall
@@ -274,14 +274,14 @@ exports[`toggling an option marks it as selected 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
         style="width: 50%; height: 100%; left: calc(50% - 2px); top: -2px;"
       />
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Cytoplasm
@@ -296,7 +296,7 @@ exports[`toggling an option marks it as selected 1`] = `
       </div>
     </div>
     <div
-      class="toggle"
+      class="toggle "
     >
       <div
         class="slider"
@@ -310,7 +310,7 @@ exports[`toggling an option marks it as selected 1`] = `
         </span>
       </div>
       <div
-        class="toggle-option"
+        class="toggle-option "
       >
         <span>
           Impermeable membrane

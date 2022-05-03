@@ -52,7 +52,7 @@ test('toggling an option marks it as selected', () => {
 
   expect(asFragment()).toMatchSnapshot()
   expect(toggle.className).toBe( "toggle-option selected")
-  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("toggle-option")
+  expect((screen.getByText("Cell wall").parentElement as Element).className).toBe("toggle-option ")
 });
 
 test('marking last incorrect answer correct updates status text', () => {
@@ -83,7 +83,7 @@ test('marking last incorrect answer correct locks toggles', () => {
   fireEvent.click(lockedToggle)
 
   expect(asFragment()).toMatchSnapshot()
-  expect(lockedToggle.className).toBe("toggle-option")
+  expect(lockedToggle.className).toBe("toggle-option ")
 });
 
 test('correctness class changes as more options are answered correct', () => {
