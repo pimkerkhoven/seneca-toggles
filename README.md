@@ -8,7 +8,7 @@ Questions need to have the following format
 
 ```js
 question = {
-    title: "Qustion Title",
+    title: "Question Title",
     parts: [{
         options: ["Option 1", "Option 2"],
         answer: "Option 1"
